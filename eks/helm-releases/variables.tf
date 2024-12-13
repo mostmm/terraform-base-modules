@@ -10,7 +10,7 @@ variable "helm_releases" {
     name       = string
     repository = string
     chart      = string
-    version    = string
+    version    = optional(string)
     namespace  = string
     values     = optional(list(string), [])
   }))
