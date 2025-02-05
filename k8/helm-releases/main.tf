@@ -1,7 +1,7 @@
 resource "helm_release" "default" {
-  for_each = { for key, release in var.releases : release.name => release }
+  for_each = var.releases
 
-  name             = each.value.name
+  name             = each.key
   repository       = each.value.repository
   chart            = each.value.chart
   namespace        = each.value.namespace
