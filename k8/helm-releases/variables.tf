@@ -6,8 +6,7 @@ variable "helm_provider" {
 }
 
 variable "releases" {
-  type = list(object({
-    name             = string
+  type = map(object({
     repository       = string
     chart            = string
     version          = optional(string)
