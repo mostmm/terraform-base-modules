@@ -16,4 +16,12 @@ resource "helm_release" "default" {
       value = set.value
     }
   }
+
+  dynamic "set_sensitive" {
+    for_each = tomap(each.value.sets)
+    content {
+      name  = set.key
+      value = set.value
+    }
+  }
 }
