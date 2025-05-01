@@ -1,9 +1,9 @@
-variable "helm_provider" {
-  type = object({
-    config_path    = optional(string, "~/.kube/config")
-    config_context = optional(string)
-  })
-}
+# variable "helm_provider" {
+#   type = object({
+#     config_path    = optional(string, "~/.kube/config")
+#     config_context = optional(string)
+#   })
+# }
 
 variable "releases" {
   type = map(object({
@@ -13,5 +13,6 @@ variable "releases" {
     create_namespace = optional(bool, true)
     namespace        = string
     values           = optional(list(string), [])
+    sets             = optional(map(string), {})
   }))
 }

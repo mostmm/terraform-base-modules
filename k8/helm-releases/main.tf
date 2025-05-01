@@ -8,4 +8,12 @@ resource "helm_release" "default" {
   create_namespace = each.value.create_namespace
   version          = each.value.version
   values           = [for key, path in each.value.values : file(path)]
+
+  dynamic "set" {
+    for_each = tomap(each.value.sets)
+    content {
+      name  = set.key
+      value = set.value
+    }
+  }
 }
