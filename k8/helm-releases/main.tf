@@ -10,7 +10,7 @@ resource "helm_release" "default" {
   values           = [for key, path in each.value.values : file(path)]
 
   dynamic "set" {
-    for_each = tomap(each.value.sets)
+    for_each = tomap(each.value.set)
     content {
       name  = set.key
       value = set.value
@@ -18,7 +18,7 @@ resource "helm_release" "default" {
   }
 
   dynamic "set_sensitive" {
-    for_each = tomap(each.value.sets)
+    for_each = tomap(each.value.set_sensitive)
     content {
       name  = set_sensitive.key
       value = set_sensitive.value

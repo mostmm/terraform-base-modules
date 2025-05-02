@@ -13,7 +13,7 @@ variable "releases" {
     create_namespace = optional(bool, true)
     namespace        = string
     values           = optional(list(string), [])
-    sets             = optional(map(string), {})
+    set              = optional(map(string), {})
     set_sensitive    = optional(map(string), {})
   }))
 }
